@@ -38,13 +38,13 @@ try:
                 ahora1=ahora.strftime('%d/%m/%Y')
                 lista_tiempo.append(str(ahora1))
                             
+                diccionario["Tiempo"]= lista_tiempo
                 diccionario["Descripcion"]= lista_descripcion
                 diccionario["Cantidad vendida"]= lista_cantidad
                 diccionario["Precio"]= lista_precio
-                diccionario["Tiempo"]= lista_tiempo
                 diccionario1= pd.DataFrame(diccionario)
             
-                direct="Seguimiento.cvs"
+                direct="Seguimiento.csv"
                 diccionario1.to_csv(direct, index=None, mode="a", header=not os.path.isfile(direct))
                 
                 contador+=1
@@ -64,12 +64,11 @@ try:
         
                     
         if menu == 2:
-            
+
+
             break
+            
             
             
 except:
     print(f"Ocurrió un problema {sys.exc_info()[0]}")
-
-             
-        
