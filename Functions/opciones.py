@@ -6,10 +6,13 @@ import os
 
 class Venta:
 
-    def __init__(self,descripcion="",cantidad="",precio=""):
+    def __init__(self,descripcion="",cantidad="",precio="",fecha="",documento="",df=""):
         self.descripcion = descripcion
         self.cantidad = cantidad
         self.precio = precio
+        self.fecha = fecha
+        self.documento = documento
+        self.df = df
 
     def venta_producto(self):
 
@@ -22,11 +25,9 @@ class Venta:
         lista_descripcion.append(self.descripcion)
         lista_cantidad.append(self.cantidad)
         lista_precio.append(self.precio)
-        lista_mult = self.precio * self.cantidad
 
-        ahora = datetime.datetime.now()
-        ahora1=ahora.strftime('%d/%m/%Y')
-        lista_tiempo.append(str(ahora1))
+
+        lista_tiempo.append(self.fecha)
     
         diccionario["Fecha"]= lista_tiempo
         diccionario["Descripcion"]= lista_descripcion
@@ -36,7 +37,15 @@ class Venta:
 
         return diccionario1
 
-def to_csv(nombre,dataframe):
-    direct = nombre
-    dataframe.to_csv(direct, index=None, mode="a", header=not os.path.isfile(direct))
+    def producto_fecha(self):
+            df = pd.read_csv(f"{self.documento}")
+            i = df.query(f"Fecha == '{self.fecha}'")
+            if i.empty == True:
+                return f"No hay movientos con la fecha proporcionada: {self.fecha} \n"
+            else:
+                return i
+
+    def to_csv(self):
+        direct = self.documento
+        self.df.to_csv(direct, index=None, mode="a", header=not os.path.isfile(direct))
         
