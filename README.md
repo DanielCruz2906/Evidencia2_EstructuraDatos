@@ -6,13 +6,13 @@ En este caso, se llevará el registro de ventas de un negocio de bisutería.
 Bisutería se refiere a la industria que produce objetos materiales de adorno que no están hechos de materiales preciosos.
 ### Requerimientos funcionales por cumplir:
 Se ofrecerá un menú navegable con las siguientes opciones:
-•	Registrar una venta
-•	Consultar ventas de un día específico
-•	Salir
+- Registrar una venta
+- Consultar ventas de un día específico
+- Salir
 Para el caso de registrar una venta se considera que en una sola venta pueden venderse uno o más artículos y, para cada uno de ellos, se captura el detalle consistente en:
-•	Descripción del artículo
-•	Cantidad de piezas vendidas
-•	Precio de venta
+- Descripción del artículo
+- Cantidad de piezas vendidas
+- Precio de venta
 Al final del registro de cada venta, se informa el monto total a pagar por parte del cliente.
 Al final del registro de cada venta, se almacena su detalle, incluyendo la fecha actual del sistema.
 Para consultar las ventas de un día específico, se le solicita al usuario la fecha que desea consultar; si existen ventas de la fecha indicada se le muestra al usuario, de lo contrario se le informa que no se registraron ventas para dicha fecha.
