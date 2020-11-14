@@ -1,7 +1,5 @@
-import pandas as pd
 import sys
 import datetime
-import csv
 import os
 from Functions.opciones import Venta
 from os import system,name
