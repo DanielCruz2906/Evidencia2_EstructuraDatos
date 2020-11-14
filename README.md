@@ -9,7 +9,10 @@ Se ofrecerá un menú navegable con las siguientes opciones:
 - Registrar una venta
 - Consultar ventas de un día específico
 - Salir
+
 Para el caso de registrar una venta se considera que en una sola venta pueden venderse uno o más artículos y, para cada uno de ellos, se captura el detalle consistente en:
+
+
 - Descripción del artículo
 - Cantidad de piezas vendidas
 - Precio de venta
