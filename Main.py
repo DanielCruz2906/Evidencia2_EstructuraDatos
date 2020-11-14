@@ -4,34 +4,40 @@ import datetime
 import csv
 import os
 from Functions.opciones import Venta
+from os import system,name
+def limpiar():
+    if name == "nt":
+        system("cls")
+    else:
+        system("clear")
 
 #diccionario= {}
 contador=1
-formato=("uwu-"*25 + "\n")
 direct="Seguimiento.csv"
-
+limpiar()
 while True:
     try:
-        print("Que movimiento deseas hacer")
-        menu=input("1:Registrar una venta\n2:Consultar ventas de un dia en especifico\n3:Salir\n")
-        print("\n")
+        print("┌──────────────────────────────────────────────┐")
+        print("█         Que movimiento deseas hacer          █")
+        print("█ [1]:Registrar una venta                      █\n█ [2]:Consultar ventas de un dia en especifico █\n█ [3]:Salir                                    █\n█                                              █")
+        print("└──────────────────────────────────────────────┘")
+        menu=input("Opcion:")
         lista_mult=[]
         
         if menu == "1":
             ciclo=1
             while ciclo == 1:
-                                
-                print(formato)
                 
                 ahora = datetime.datetime.now()
                 ahora1=ahora.strftime('%d/%m/%Y')
+                limpiar()
+                print("┌────────────────────────────────────────────────────────────────┐")
+                v_descripcion= input(f"█  Descripcion del producto {contador}: ")
                 
-                v_descripcion= input(f"Descripcion del producto {contador}: \n")
+                v_cantidad= int(input("█  Cuantas piezas se vendieron: "))
                 
-                v_cantidad= int(input("Cuantas piezas se vendieron: \n"))
-                
-                v_precio=float(input("Cual es el precio del producto: \n"))
-                
+                v_precio=float(input("█  Cual es el precio del producto: "))
+                print("└────────────────────────────────────────────────────────────────┘")
                 lista_mult.append(v_cantidad * v_precio)
                 
                 diccionario1 = Venta(v_descripcion,v_cantidad,v_precio,ahora1).venta_producto()
@@ -39,40 +45,40 @@ while True:
                 Venta(documento=direct,df=diccionario1).to_csv()
                 
                 contador+=1
-
-                print(formato)
-
-                print("Ingresa el numero 1 si deseas seguir registrando ventas\n\nIngresa el numero 0 si deseas salir del registrador de ventas\n")
+                print("")
+                print("┌──────────────────────────────────────────────────────────────────┐\n█                       ¿Que deseas hacer?\n█  [1]:Si deseas seguir registrando ventas\n█  [0]:Si deseas salir del registrador de ventas")
+                print("└──────────────────────────────────────────────────────────────────┘")
+                ciclo=int(input("Opcion:"))
                 
-                ciclo=int(input(":"))
-                
-                print(formato)
+                limpiar()
                 
                 print("")
         
             a=sum(lista_mult)
-
-            print(formato)
-
-            print(f"\nEl monto total es de {a} pesos\n")
+            print("┌──────────────────────────────────────────────┐\n█               PROCESO REALIZADO\n█")
+            print(f"█  El monto total es de {a} pesos\n└──────────────────────────────────────────────┘")
             
-            print(formato)
-            
-            print("PROCESO REALIZADO\n")
-        
         elif menu == "2":
-            op = input("¿Cual es la fecha que quieres consultar?\n")
+            limpiar()
+            op = input("               Formato:dd/mm/YYYY          \n┌──────────────────────────────────────────────┐\n█   ¿Cual es la fecha que quieres consultar?   █\n└──────────────────────────────────────────────┘\nOpcion:")
+            print("")
+            limpiar()
             i = Venta(fecha=op,documento=direct).producto_fecha()
-            print("\n")
             print(i)
-            print("\n")
+            
 
         elif menu == "3":
-            print("Culminación del Proceso Actual")
+            limpiar()
+            print("┌──────────────────────────────────┐\n█  Culminación del Proceso Actual  █\n└──────────────────────────────────┘")
             break
             
         else:
-            print(f"\nLa opción {menu} no es válida\n")
-
+            limpiar()
+            print("┌──────────────────────────────────────────────┐")
+            print(f"█  La opción {menu} no es válida")
+            print("└──────────────────────────────────────────────┘")
     except:
-        print(f"Ocurrió un problema {sys.exc_info()[0]}\n")
+        limpiar()
+        print("┌──────────────────────────────────────────────┐")
+        print(f"█  Ocurrió un problema {sys.exc_info()[0]}")
+        print("└──────────────────────────────────────────────┘")
